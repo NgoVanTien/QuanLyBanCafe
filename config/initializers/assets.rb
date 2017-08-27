@@ -9,3 +9,11 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+
+assets_javascripts = %w()
+
+assets_stylesheets = %w(AdminLTE.css _all-skins.css style.css)
+
+user_custom_js = %w()
+
+Rails.application.config.assets.precompile += assets_javascripts + assets_stylesheets + user_custom_js
