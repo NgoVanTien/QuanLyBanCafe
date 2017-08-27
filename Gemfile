@@ -35,6 +35,20 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Using gem by Tien
+gem "bootstrap-sass", "~> 3.3.6"
+gem "ransack", github: "activerecord-hackery/ransack"
+gem "bootstrap3-datetimepicker-rails", '~> 4.17.42'
+gem "ckeditor", "4.2.0"
+gem "devise"
+gem "chartkick"
+gem "highcharts-rails"
+gem "jquery-datatables-rails", "~> 3.4.0"
+gem "jquery-ui-rails"
+gem "breadcrumbs_on_rails"
+gem "kaminari"
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
