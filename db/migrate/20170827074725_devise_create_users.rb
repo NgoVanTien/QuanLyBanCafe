@@ -3,6 +3,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
+      t.integer :role, default: 0
+      t.boolean :can_print_build, default: false
+
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -18,7 +21,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
-      t.references :role, foreign_key: true
 
       ## Confirmable
       # t.string   :confirmation_token
