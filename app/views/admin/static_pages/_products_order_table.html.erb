@@ -1,0 +1,102 @@
+<!-- Model -->
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h3 class="modal-title table-order-name" id="lineModalLabel"></h3>
+    </div>
+    <div class="modal-body" style="height: 500px;">
+      <div class="col-md-6">
+
+        <table id="product-table" class="table table-hover">
+          <thead>
+              <tr>
+                <th>Sản Phẩm</th>
+                <th>Tác Vụ</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% products.each do |product| %>
+              <tr class="success">
+                <td>
+                  <p><%= product.name %></p>
+                </td>
+                <td class="success-<%= product.id %>">
+                  <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-sm btn-default btn-flat btn-minus" data-id="<%= product.id %>" data-name="<%= product.name %>" data-price="<%= product.price %>">
+                      <i class="fa fa-minus-circle"></i>
+                    </button>
+                    <input type="text" class="btn btn-sm btn-default btn-flat btn-text-order product-<%= product.id %>" id="inputError" placeholder="0" readonly="true">
+                    <button type="button" class="btn btn-sm btn-default btn-flat btn-plus" data-id="<%= product.id %>" data-name="<%= product.name %>" data-price="<%= product.price %>">
+                      <i class="fa fa-plus-circle"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6 product-build" id="product-build">
+        <div class="title-build">
+          <%= image_tag "img/logo.jpg", class: "build-img", alt: "User Image", height: "69px" %>
+          <h3>ALIBABA CAFE</h3>
+        </div>
+        <div class="clearfix"></div>
+        <div class="header-build">
+          <p>74 Nguyễn Đổ Cung - Đà Nẵng</p>
+          <p><b>Tel: 0988.722.144</b></p>
+          <p>----- ***** -----</p>
+          <h5>PHIẾU THANH TOÁN</h5>
+        </div>
+        <h5>Thời gian: <span class="end-build time-build">sdfdf</span></h5>
+        <h5><p class="table-curent-build end-build-sum"></p></h5>
+        <div class="body-build">
+          <ol class="product-show-list">
+            <div class="item-product item-col-1">
+              <span class="cl-name-order">Tên Hàng</span>
+            </div><div class="item-product item-col-2">
+              <span class="cl-price-order">ĐG</span>
+            </div><div class="item-product item-col-3">
+              <span class="cl-num-order">SL</span>
+            </div><div class="item-product item-col-4 item-col-header">
+              <span class="cl-money-order">TT</span>
+            </div>
+            <div class="clearfix"></div>
+            <span>---------------------------------------------------------</span>
+          </ol>
+          <span>------------------------------------------------------------</span>
+
+          <h5>Tổng cộng : <span class="end-build js-sum-build">0 VND</span></h5>
+          <h5>Giảm giá (0%) : <span class="end-build">0 VND</span></h5>
+          <h5>Thanh toán : <span class="end-build end-build-sum js-sum-build">0 VND</span></h5>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+      <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default btn-info" data-dismiss="modal"  role="button">Đóng Lại</button>
+        </div>
+
+        <div class="btn-group" role="group">
+          <button type="button" id="printKitten" class="btn btn-primary btn-hover-green" data-action="save" role="button">In Hóa Đơn</button>
+        </div>
+
+        <div class="btn-group" role="group">
+          <button type="button" id="saveInfoBuild" class="btn btn-success btn-hover-green" data-action="save" role="button">Lưu Lại</button>
+        </div>
+
+        <div class="btn-group" role="group">
+          <button type="button" id="saveImage" class="btn btn-warning btn-hover-green" data-action="save" role="button">Đã Thanh Toán</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

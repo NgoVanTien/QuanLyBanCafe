@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827075258) do
+ActiveRecord::Schema.define(version: 20170905092726) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "code"
@@ -21,12 +21,21 @@ ActiveRecord::Schema.define(version: 20170827075258) do
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "product_id"
     t.integer  "table_id"
+    t.integer  "order_status", default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["table_id"], name: "index_orders_on_table_id", using: :btree
+  end
+
+  create_table "product_orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_orders_on_product_id", using: :btree
-    t.index ["table_id"], name: "index_orders_on_table_id", using: :btree
+    t.index ["order_id"], name: "index_product_orders_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_product_orders_on_product_id", using: :btree
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -34,10 +43,10 @@ ActiveRecord::Schema.define(version: 20170827075258) do
     t.string   "code"
     t.string   "name"
     t.string   "description"
-    t.float    "price",       limit: 24, default: 0.0
+    t.integer  "price",       default: 0
     t.string   "unit"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
   end
 
@@ -46,8 +55,9 @@ ActiveRecord::Schema.define(version: 20170827075258) do
     t.string   "name"
     t.string   "description"
     t.integer  "table_type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "table_location"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -69,7 +79,8 @@ ActiveRecord::Schema.define(version: 20170827075258) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "orders", "products"
   add_foreign_key "orders", "tables"
+  add_foreign_key "product_orders", "orders"
+  add_foreign_key "product_orders", "products"
   add_foreign_key "products", "categories"
 end

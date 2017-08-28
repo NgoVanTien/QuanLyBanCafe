@@ -1,0 +1,246 @@
+$("#product-table-order").html("<%= j render 'admin/static_pages/products_order_table', products: @products %>");
+
+$("#squarespaceModal").modal("show");
+
+$("#squarespaceModal").on('shown.bs.modal', function (e) {
+  var order = {};
+
+  $(".table-order-name").html("<%= @current_table.first.name %>");
+
+  $('#product-table').DataTable({
+    "scrollY": "500px",
+    "scrollCollapse": true,
+    "paging": false,
+    "bDestroy": true,
+  });
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+
+
+
+
+
+  <% if @product_order_of_table.present? %>
+    <% @product_order_of_table.each do |item_prod| %>
+      var idTextOrder = <%= item_prod.product.id %>;
+
+      var nameTextOrder = "<%= item_prod.product.name %>";
+      var priceTextOrder = "<%= item_prod.product.price %>";
+      var priceTextOrderConvert = numberWithCommas(priceTextOrder);
+      var productID = ".product-" + "<%= item_prod.product.id %>";
+      var successClass = ".success-" + idTextOrder;
+      // alert(productID);
+
+      $(productID).val("<%= item_prod.quantity %>");
+      $(productID).css("color", "red");
+      $(successClass).css("background-color", "indianred");
+      $(".product-show-list").append("<li class='product-show-" + idTextOrder +"'><div class='break-all-word item-product item-col-1'><span class='cl-name-order name-show-" + idTextOrder +"'>" +nameTextOrder +"</span></div><div class='item-product item-col-2'><span class='cl-price-order price-show-" + idTextOrder +"'>" +priceTextOrderConvert +"</span></div><div class='item-product item-col-3'><span class='cl-num-order number-show-" + idTextOrder +" number-product'>1</span></div><div class='item-product item-col-4'><span class='js-sum-order-build cl-money-order money-total-show-" + idTextOrder +"'>" + priceTextOrderConvert +"</span></div></li>");
+    <% end %>
+  <% end %>
+
+
+  // var idTextOrder = $(this).data("id");
+  // var productID = ".product-" + idTextOrder;
+  //
+  // var nameTextOrder = $(this).data("name");
+  // var priceTextOrder = $(this).data("price");
+  // var priceTextOrderConvert = numberWithCommas(priceTextOrder);
+  //
+  // var successClass = ".success-" + idTextOrder
+  // var valueTextOrder = $(productID).val();
+  // if (valueTextOrder == "") {
+  //   $(productID).val("1");
+  //   $(productID).css("color", "red");
+  //   $(successClass).css("background-color", "indianred");
+  // } else if (valueTextOrder != null){
+  //   $(productID).val(parseInt($(productID).val()) + 1);
+  //   $(successClass).css("background-color", "indianred");
+  // }
+  //
+  // var classProductShow = $(".product-show-" + idTextOrder)
+  // var classNumberShow = $(".number-show-" + idTextOrder)
+  // var classTotalMoneyShow = $(".money-total-show-" + idTextOrder)
+  // if (classProductShow.length == 0) {
+  //   $(".product-show-list").append("<li class='product-show-" + idTextOrder +"'><div class='break-all-word item-product item-col-1'><span class='cl-name-order name-show-" + idTextOrder +"'>" +nameTextOrder +"</span></div><div class='item-product item-col-2'><span class='cl-price-order price-show-" + idTextOrder +"'>" +priceTextOrderConvert +"</span></div><div class='item-product item-col-3'><span class='cl-num-order number-show-" + idTextOrder +" number-product'>1</span></div><div class='item-product item-col-4'><span class='js-sum-order-build cl-money-order money-total-show-" + idTextOrder +"'>" + priceTextOrderConvert +"</span></div></li>");
+  // } else {
+  //   $(classNumberShow).text(+$(classNumberShow).text() +1);
+  // }
+  //
+  // $(classTotalMoneyShow).text(numberWithCommas(+priceTextOrder * $(classNumberShow).text()));
+  //
+  // var subtotal = 0;
+  // $('.js-sum-order-build').each(function() {
+  //     var price = $(this).text();
+  //     subtotal += +price.replace(",","");
+  // });
+  // $(".js-sum-build").text(numberWithCommas(subtotal));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  $(".btn-plus").on("click", function(){
+    var idTextOrder = $(this).data("id");
+    var productID = ".product-" + idTextOrder;
+
+    var nameTextOrder = $(this).data("name");
+    var priceTextOrder = $(this).data("price");
+    var priceTextOrderConvert = numberWithCommas(priceTextOrder);
+
+    var successClass = ".success-" + idTextOrder
+    var valueTextOrder = $(productID).val();
+    if (valueTextOrder == "") {
+      $(productID).val("1");
+      $(productID).css("color", "red");
+      $(successClass).css("background-color", "indianred");
+    } else if (valueTextOrder != null){
+      $(productID).val(parseInt($(productID).val()) + 1);
+      $(successClass).css("background-color", "indianred");
+    }
+
+    var classProductShow = $(".product-show-" + idTextOrder)
+    var classNumberShow = $(".number-show-" + idTextOrder)
+    var classTotalMoneyShow = $(".money-total-show-" + idTextOrder)
+    if (classProductShow.length == 0) {
+      $(".product-show-list").append("<li class='product-show-" + idTextOrder +"'><div class='break-all-word item-product item-col-1'><span class='cl-name-order name-show-" + idTextOrder +"'>" +nameTextOrder +"</span></div><div class='item-product item-col-2'><span class='cl-price-order price-show-" + idTextOrder +"'>" +priceTextOrderConvert +"</span></div><div class='item-product item-col-3'><span class='cl-num-order number-show-" + idTextOrder +" number-product'>1</span></div><div class='item-product item-col-4'><span class='js-sum-order-build cl-money-order money-total-show-" + idTextOrder +"'>" + priceTextOrderConvert +"</span></div></li>");
+    } else {
+      $(classNumberShow).text(+$(classNumberShow).text() +1);
+    }
+
+    $(classTotalMoneyShow).text(numberWithCommas(+priceTextOrder * $(classNumberShow).text()));
+
+    var subtotal = 0;
+    $('.js-sum-order-build').each(function() {
+        var price = $(this).text();
+        subtotal += +price.replace(",","");
+    });
+    $(".js-sum-build").text(numberWithCommas(subtotal));
+
+
+    // Luu du lieu vao hash va dua len server
+    if (order[idTextOrder] == undefined) {
+      order[idTextOrder] = 1
+    } else {
+      var count = order[idTextOrder]
+      count += 1
+      order[idTextOrder] = count
+    }
+
+
+
+  });
+
+  $(".btn-minus").on("click", function(){
+    var idTextOrder = $(this).data("id");
+    var productID = ".product-" + idTextOrder
+
+    var nameTextOrder = $(this).data("name");
+    var priceTextOrder = $(this).data("price");
+
+    var successClass = ".success-" + idTextOrder
+    var valueTextOrder = $(productID).val();
+    if (valueTextOrder == "") {
+      $(productID).val("");
+      $(successClass).css("background-color", "#dff0d8");
+    } else if (valueTextOrder != null && valueTextOrder != 1){
+      $(productID).val(parseInt($(productID).val()) - 1);
+    } else if (valueTextOrder == 1){
+      $(productID).val("");
+      $(successClass).css("background-color", "#dff0d8");
+    }
+
+    var classProductShow = $(".product-show-" + idTextOrder)
+    var classNumberShow = $(".number-show-" + idTextOrder)
+
+    if (classNumberShow.text() == 1) {
+      $(classProductShow).remove();
+    } else {
+      $(classNumberShow).text(+$(classNumberShow).text() - 1);
+    }
+
+    var classTotalMoneyShow = $(".money-total-show-" + idTextOrder)
+    $(classTotalMoneyShow).text(+priceTextOrder * $(classNumberShow).text());
+
+
+    // Luu du lieu vao hash va dua len server
+    if (order[idTextOrder] == 1 || order[idTextOrder] == undefined) {
+      delete order[idTextOrder]
+    } else {
+      var count = order[idTextOrder]
+      count -= 1
+      order[idTextOrder] = count
+    }
+
+  });
+
+
+  var currentdate = new Date();
+  var datetime = currentdate.getHours() + "h" + currentdate.getMinutes() + "p Ngày:" + currentdate.getDate() + "/" + (currentdate.getMonth()+1) + "/" + currentdate.getFullYear() ;
+  $(".time-build").html(datetime);
+  $(".table-curent-build").html("<%= @current_table.first.name %>");
+
+
+  $("#printKitten").click(function() {
+    $("#product-build").printThis();
+  });
+
+
+
+  $("#saveInfoBuild").on("click", function(){
+    var idTable = "<%= @current_table.first.id %>"
+    alert(idTable);
+    var url = "<%= admin_ajax_products_orders_path %>"
+    $.ajax({
+      type: "POST",
+      url: url,
+      dataType: "script",
+      data: {
+        id_table: idTable,
+        order: order
+      }
+    });
+  });
+
+});

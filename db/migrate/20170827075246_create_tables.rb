@@ -5,6 +5,7 @@ class CreateTables < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :description
       t.integer :table_type
+      t.integer :table_location
 
       t.timestamps
     end
