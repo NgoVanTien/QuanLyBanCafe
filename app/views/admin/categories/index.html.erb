@@ -1,0 +1,28 @@
+<center>
+<table>
+  <tr>
+    <td>Mã loại</td>
+    <td>Tên loại</td>
+    <td>Mô tả</td>
+    <td>Hành động</td>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.code %></td>
+      <td><%= category.name %></td>
+      <td><%= category.description %></td>
+      <td>
+        <%= link_to edit_admin_category_path(category), class: "btn btn-warning" do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+       <!--  <%= link_to admin_category_path(category),
+          method: :delete, class: "btn btn-danger", data: {confirm: "Bạn chắc chắn muốn xóa ?"} do %>
+          <i class="fa fa-trash"></i>
+        <% end %> -->
+      </td>
+    </tr>
+  <% end %>
+</table>
+ <center><%= paginate @categories %></center>
+</center>

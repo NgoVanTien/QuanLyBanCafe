@@ -1,2 +1,32 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<center>
+<table>
+  <tr>
+    <td>Mã sản phẩm </td>
+    <td>Tên sản phẩm </td>
+    <td>Mô tả</td>
+    <td>Giá</td>
+    <td>Đơn vị</td>
+    <td>Hành động</td>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.code %></td>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td><%= product.price %></td>
+      <td><%= product.unit %></td>
+      <td>
+        <%= link_to edit_admin_product_path(product), class: "btn btn-warning" do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to admin_product_path(product),
+          method: :delete, class: "btn btn-danger", data: {confirm: "Bạn chắc chắn muốn xóa ?"} do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<center><%= paginate @products %></center>
+</center>
