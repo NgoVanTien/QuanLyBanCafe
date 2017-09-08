@@ -1,0 +1,24 @@
+<% if table_out_left.orders.present? %>
+  <% if table_out_left.orders.where(order_status: 1).first.order_status == 1 %>
+    <div class="table-cafe-on">
+      <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_out_left.id}, class: "table-order-id" do %>
+        <%= image_tag "icon/table_on.png", class: "online", alt: "User Image", height: "100px" %>
+        <h4><%= table_out_left.name %></h4>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="table-cafe-off">
+      <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_out_left.id}, class: "table-order-id" do %>
+        <%= image_tag "icon/table_off.svg", class: "online", alt: "User Image", height: "100px" %>
+        <h4><%= table_out_left.name %></h4>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="table-cafe-off">
+    <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_out_left.id}, class: "table-order-id" do %>
+    <%= image_tag "icon/table_off.svg", class: "online", alt: "User Image", height: "100px" %>
+    <h4><%= table_out_left.name %></h4>
+    <% end %>
+  </div>
+<% end %>

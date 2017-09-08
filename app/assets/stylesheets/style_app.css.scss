@@ -1,3 +1,134 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
+
+
+.table-cafe-off {
+  width: 120px;
+  height: 120px;
+  float: left;
+  margin: 15px;
+  border: 2px solid #777;
+  border-radius: 50%;
+  padding: 20px;
+  margin-bottom: 50px;
+  img {
+    opacity: 0.5;
+    height: 80px;
+  }
+  h4 {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: black;
+    font-size: 25px;
+  }
+}
+.table-cafe-on {
+  width: 120px;
+  height: 120px;
+  float: left;
+  margin: 15px;
+  border: 2px solid #777;
+  border-radius: 50%;
+  padding: 20px;
+  margin-bottom: 50px;
+  img {
+    height: 80px;
+  }
+  h4 {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 25px;
+  }
+}
+
+
+.list-btn-order {
+  display: flow-root;
+}
+
+.btn-text-order {
+  width: 40px;
+  font-weight: bold;
+  font-size: 19px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.product-build {
+  width: 220px;
+  padding: 5px;
+  border: 1px solid;
+}
+
+.product-show-list {
+  padding-left: 10px;
+}
+
+.number-product {
+  border: 0px;
+  width: 10px;
+  text-align: center;
+}
+
+.item-product {
+  // float: left;
+  display: inline-block;
+
+}
+
+.item-col-header {
+  text-align: center;
+}
+.item-col-1 {
+  width: 80px;
+}
+.item-col-2 {
+  width: 50px;
+  text-align: -webkit-right;
+  padding-right: 20px;
+}
+.item-col-3 {
+  width: 15px;
+}
+.item-col-4 {
+  width: 50px;
+  text-align: -webkit-right;
+}
+
+.build-img {
+  float: left;
+}
+
+.title-build {
+  h3 {
+    padding-top: 25px;
+    margin: 0px;
+    font-size: 20px;
+  }
+}
+
+.header-build {
+  text-align: center;
+  p {
+    margin: 0px;
+  }
+}
+
+.body-build {
+  font-size: 11px;
+}
+
+.break-all-word {
+  word-break: break-all;
+}
+
+.end-build {
+  float: right;
+}
+
+.end-build-sum {
+  font-weight: bold;
+}

@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'static_pages#index'
-
-    get 'static_pages/show'
-
-    get 'static_pages/home'
+    resources :products
+    namespace :ajax do
+      resources :products_orders
+    end
   end
 end

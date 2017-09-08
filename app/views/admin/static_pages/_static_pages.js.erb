@@ -1,0 +1,14 @@
+$(document).ready(function() {
+  $(".table-order-id").on("click", function(){
+    var idTable = $(this).data("tableid")
+    var url = "<%= admin_ajax_products_orders_path %>"
+    $.ajax({
+      type: "GET",
+      url: url,
+      dataType: "script",
+      data: {
+        id_table: idTable
+      }
+    });
+  });
+});

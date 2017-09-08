@@ -1,0 +1,20 @@
+
+$("#table-list-out-left").html("<%= j render collection: @table_out_left, partial: 'admin/static_pages/table_out_left' %>")
+$("#table-list-home").html("<%= j render collection: @table_home, partial: 'admin/static_pages/table_home' %>")
+$("#table-list-front").html("<%= j render collection: @table_front, partial: 'admin/static_pages/table_front' %>")
+
+
+
+
+$(".table-order-id").on("click", function(){
+  var idTable = $(this).data("tableid")
+  var url = "<%= admin_ajax_products_orders_path %>"
+  $.ajax({
+    type: "GET",
+    url: url,
+    dataType: "script",
+    data: {
+      id_table: idTable
+    }
+  });
+});
