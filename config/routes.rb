@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root 'static_pages#index'
     resources :products
     resources :categories
+    resources :tables
     namespace :ajax do
       resources :products_orders
     end

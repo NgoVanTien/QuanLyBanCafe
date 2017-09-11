@@ -1,8 +1,26 @@
 $("#product-table-order").html("<%= j render 'admin/static_pages/products_order_table', products: @products %>");
 
+$(".load-alert").on("click", function(){
+  swal({
+    title: "Đang Xử Lý",
+    timer: 2000,
+    showConfirmButton: false,
+    type: "success"
+  });
+});
+$(".load-alert-slow").on("click", function(){
+  swal({
+    title: "Đang Xử Lý",
+    timer: 10000,
+    showConfirmButton: false,
+    type: "success"
+  });
+});
+
 $("#squarespaceModal").modal("show");
 
 $("#squarespaceModal").on('shown.bs.modal', function (e) {
+  swal.close();
   var order = {};
 
   $(".table-order-name").html("<%= @current_table.first.name %>");

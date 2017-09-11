@@ -18,3 +18,25 @@
 //= require app
 //= require demo
 //= require printThis
+//= require sweetalert.min
+
+$(document).ready(function(){
+  $(".load-alert").on("click", function(){
+    swal({
+      title: "Đang Xử Lý",
+      timer: 1000,
+      showConfirmButton: false,
+      type: "success"
+    });
+  });
+});
+$(document).ready(function(){
+  $(".load-alert-slow").on("click", function(){
+    swal({
+      title: "Đang Xử Lý",
+      timer: 10000,
+      showConfirmButton: false,
+      type: "success"
+    });
+  });
+});

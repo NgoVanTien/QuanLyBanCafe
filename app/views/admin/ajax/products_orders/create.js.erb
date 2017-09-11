@@ -18,3 +18,20 @@ $(".table-order-id").on("click", function(){
     }
   });
 });
+
+$(".load-alert").on("click", function(){
+  swal({
+    title: "Đang Xử Lý",
+    timer: 2000,
+    showConfirmButton: false,
+    type: "success"
+  });
+});
+$(".load-alert-slow").on("click", function(){
+  swal({
+    title: "Đang Xử Lý",
+    timer: 10000,
+    showConfirmButton: false,
+    type: "success"
+  });
+});
