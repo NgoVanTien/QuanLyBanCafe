@@ -1,5 +1,5 @@
 class Admin::Ajax::ProductsOrdersController < ApplicationController
-  before_action :load_table, only: %i(create)
+  before_action :load_table, only: %i(create update)
 
   def index
     id_table = params[:id_table]
@@ -27,7 +27,6 @@ class Admin::Ajax::ProductsOrdersController < ApplicationController
 
     arr_params_order = []
     arr_order = []
-
     item_order.map do |id_product, number_product|
       if get_items_order(order, id_product, number_product).present?
         @item_order.update(quantity: number_product)
@@ -37,7 +36,6 @@ class Admin::Ajax::ProductsOrdersController < ApplicationController
       arr_params_order.push(id_product)
       arr_params_order.map! { |i| i.to_i }
     end
-
     arr_order = get_product_with_order order
     list_id_product = arr_order - arr_params_order
 
@@ -47,6 +45,12 @@ class Admin::Ajax::ProductsOrdersController < ApplicationController
         @list_product.destroy_all
       end
     end
+  end
+
+  def update
+    table_id =  params[:id]
+    order = Order.where(table_id: table_id, order_status: 1)
+    order.update(order_status: 0)
   end
 
   private
