@@ -1,0 +1,30 @@
+<%= form_for [:admin, table], html: {class: "form-horizontal"} do |f| %>
+  <div class="box-body">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Tên Lớp</label>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class: "form-control", placeholder: "Nhập Tên Lớp" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Tên Loại Môn Học</label>
+      <div class="col-sm-8">
+      
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+  </div>
+  <div class="box-footer">
+    <%= link_to "Trở Về", admin_tables_path, class: "btn btn-default btn-warning" %>
+    <% if table.persisted?%>
+      <%= f.submit "Chỉnh Sửa", class: "btn btn-info pull-right load-alert" %>
+    <% else %>
+      <%= f.submit "Tạo Mới", class: "btn btn-info pull-right load-alert" %>
+    <% end %>
+  </div>
+<% end %>

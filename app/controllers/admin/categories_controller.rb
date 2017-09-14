@@ -4,7 +4,7 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @categories = Category.page(params[:page])
-      .per 10
+      .per_page 10
   end
 
   def new

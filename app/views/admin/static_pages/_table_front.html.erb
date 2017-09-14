@@ -1,14 +1,14 @@
 <% if table_front.orders.present? %>
   <% if table_front.orders.where(order_status: 1)&.first&.order_status == 1 %>
     <div class="table-cafe-on">
-      <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_front.id}, class: "table-order-id" do %>
+      <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_front.id}, class: "table-order-id load-alert-slow" do %>
         <%= image_tag "icon/table_on.png", class: "online", alt: "User Image", height: "100px" %>
         <h4><%= table_front.name %></h4>
       <% end %>
     </div>
   <% else %>
     <div class="table-cafe-off">
-      <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_front.id}, class: "table-order-id" do %>
+      <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_front.id}, class: "table-order-id load-alert-slow" do %>
         <%= image_tag "icon/table_off.svg", class: "online", alt: "User Image", height: "100px" %>
         <h4><%= table_front.name %></h4>
       <% end %>
@@ -16,7 +16,7 @@
   <% end %>
 <% else %>
   <div class="table-cafe-off">
-    <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_front.id}, class: "table-order-id" do %>
+    <%= link_to "javascript:void(0)", data: {turbolinks: false, tableid: table_front.id}, class: "table-order-id load-alert-slow" do %>
     <%= image_tag "icon/table_off.svg", class: "online", alt: "User Image", height: "100px" %>
     <h4><%= table_front.name %></h4>
     <% end %>

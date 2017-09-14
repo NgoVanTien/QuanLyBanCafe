@@ -37,7 +37,8 @@ gem "highcharts-rails"
 gem "jquery-datatables-rails", "~> 3.4.0"
 gem "jquery-ui-rails"
 gem "breadcrumbs_on_rails"
-gem "kaminari"
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+gem 'bootstrap-will_paginate', '0.0.10'
 gem "font-awesome-rails"
 
 group :development, :test do
