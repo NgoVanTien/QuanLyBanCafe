@@ -50,7 +50,6 @@ $("#squarespaceModal").on('shown.bs.modal', function (e) {
       console.log(priceTextOrderConvert);
       var productID = ".product-" + "<%= item_prod.product.id %>";
       var successClass = ".success-" + idTextOrder;
-      // alert(productID);
 
       $(productID).val("<%= item_prod.quantity %>");
       $(productID).css("color", "red");
@@ -172,7 +171,6 @@ $("#squarespaceModal").on('shown.bs.modal', function (e) {
 
     // Submit dử liệu khi bấm lưu
     var idTable = "<%= @current_table.first.id %>"
-    alert("Bạn có muốn lưu dử liệu lại không ?");
     var url = "<%= admin_ajax_products_orders_path %>"
     $.ajax({
       type: "POST",

@@ -1,18 +1,29 @@
 <%= form_for [:admin, table], html: {class: "form-horizontal"} do |f| %>
   <div class="box-body">
+
     <div class="form-group">
-      <label for="inputEmail3" class="col-sm-2 control-label">Tên Lớp</label>
+      <label for="inputEmail3" class="col-sm-2 control-label">Mã Bàn</label>
       <div class="col-sm-8">
-        <%= f.text_field :name, class: "form-control", placeholder: "Nhập Tên Lớp" %>
+        <%= f.text_field :code, class: "form-control", placeholder: "Nhập Mã Bàn" %>
       </div>
       <div class="col-md-2">
       </div>
     </div>
 
     <div class="form-group">
-      <label for="inputEmail3" class="col-sm-2 control-label">Tên Loại Môn Học</label>
+      <label for="inputEmail3" class="col-sm-2 control-label">Tên Bàn</label>
       <div class="col-sm-8">
-      
+        <%= f.text_field :name, class: "form-control", placeholder: "Nhập Tên Bàn" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Vị Trí</label>
+      <div class="col-sm-8">
+        <%= f.select :position_id, @positions.collect {|vt| [vt.name, vt.id]},
+        {include_blank: "Chọn vị trí"}, {class: "form-control"} %>
       </div>
       <div class="col-md-2">
       </div>
