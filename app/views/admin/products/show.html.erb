@@ -1,0 +1,96 @@
+<section class="content-header menu-header-button">
+  <%= link_to new_admin_product_path, class: "btn icon-btn btn-danger" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span>
+    Thêm Mới
+  <% end %>
+
+  <%= link_to admin_root_path, class: "btn icon-btn btn-warning" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-circle-arrow-left img-circle text-warning"></span>
+    Trở Về
+  <% end %>
+
+  <%= link_to admin_root_path, class: "btn icon-btn btn-primary" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-primary"></span>
+    Trang Quản Lý
+  <% end %>
+
+  <%= link_to "", class: "btn icon-btn btn-success" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-open-file img-circle text-success"></span>
+    Nhập Từ Excel
+  <% end %>
+
+  <%= link_to "", class: "btn icon-btn btn-info" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-paste img-circle text-info"></span>
+    Xuất Excel
+  <% end %>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-default box-solid">
+        <div class="box-header width-border">
+          <h3 class="box-title">Sản Phẩm</h3>
+          <div class="box-tools pull-right"></div>
+        </div>
+        <div class="box-body body-notice-box">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label"><h3>Mã Sản Phẩm :</h3></label>
+              <div class="col-sm-10">
+                <h3><%= @product.code %></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label"><h3>Tên Sản Phẩm :</h3></label>
+              <div class="col-sm-10">
+                <h3><%= @product.name %></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label"><h3>Thể Loại :</h3></label>
+              <div class="col-sm-10">
+                <h3><%= @product.category.name %></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label"><h3>Mô Tả :</h3></label>
+              <div class="col-sm-10">
+                <h3><%= @product.description %></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label"><h3>Giá :</h3></label>
+              <div class="col-sm-10">
+                <h3><%= @product.price %></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label"><h3>Đơn Vị :</h3></label>
+              <div class="col-sm-10">
+                <h3><%= @product.unit %></h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="box-footer">
+          <div class="col-md-12">
+            <%= link_to t(".back"), admin_products_path, class: "btn btn-info pull-right" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 text-center"></div>
+  </div>
+</section>

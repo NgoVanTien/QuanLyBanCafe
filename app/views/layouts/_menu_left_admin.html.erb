@@ -31,37 +31,15 @@
         <% end %>
       </li>
 
-      <li class="treeview">
+      <li>
         <%= link_to admin_products_path, data: {turbolinks: false} do %>
-          <i class="fa fa-files-o"></i>
-          <span>Sản Phẩm</span>
+          <i class="fa fa-files-o"></i> <span>Sản Phẩm</span>
           <span class="pull-right-container">
-            <span class="label label-primary pull-right">4</span>
+            <small class="label pull-right bg-green">new</small>
           </span>
         <% end %>
-        <ul class="treeview-menu">
-          <li>
-            <%= link_to admin_products_path, data: {turbolinks: false} do %>
-              <i class="fa fa-circle-o"></i> Nước Đóng Chai
-            <% end %>
-          </li>
-          <li>
-            <%= link_to admin_products_path, data: {turbolinks: false} do %>
-              <i class="fa fa-circle-o"></i> Nước Pha Chế
-            <% end %>
-          </li>
-          <li>
-            <%= link_to admin_products_path, data: {turbolinks: false} do %>
-              <i class="fa fa-circle-o"></i> Kem
-            <% end %>
-          </li>
-          <li>
-            <%= link_to admin_products_path, data: {turbolinks: false} do %>
-              <i class="fa fa-circle-o"></i> Thuốc
-            <% end %>
-          </li>
-        </ul>
       </li>
+
       <li>
         <%= link_to admin_tables_path, data: {turbolinks: false} do %>
           <i class="fa fa-th"></i> <span>Bàn</span>
