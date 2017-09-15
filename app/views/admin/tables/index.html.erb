@@ -31,7 +31,7 @@
     <div class="col-md-12">
       <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title">Lớp</h3>
+          <h3 class="box-title">Bàn</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool btn-filter">
               <i class="fa fa-search"></i>
@@ -44,7 +44,9 @@
             <% if @tables.any? %>
               <table class="table table-hover table-striped">
                 <thead class="thead-inverse">
-                  <th><%= sort_link @search, :name, "Tên Lớp" %></th>
+                  <th><%= sort_link @search, :code, "Mã Code" %></th>
+                  <th><%= sort_link @search, :name, "Tên Bàn" %></th>
+                  <th><%= sort_link @search, :position_id, "Vị Trí" %></th>
                   <th class="tac-vu">Tác Vụ</th>
                 </thead>
                 <tbody>
@@ -55,7 +57,7 @@
                 <%= will_paginate @tables %>
               </div>
             <% else %>
-              <h3 class="text-center">Không có lớp nào.</h3>
+              <h3 class="text-center">Không có bàn nào.</h3>
               <div class="col-xs-12 text-center margin-bottom-30">
                 <%= link_to "Trở lại", admin_tables_path, class: "btn btn-default bg-red" %>
               </div>

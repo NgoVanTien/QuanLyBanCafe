@@ -2,6 +2,9 @@
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 
+.content-wrapper {
+  min-height: 1000px !important;
+}
 
 .table-cafe-off {
   width: 120px;

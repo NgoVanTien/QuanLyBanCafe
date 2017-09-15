@@ -1,10 +1,11 @@
 class Admin::TablesController < ApplicationController
   before_action :load_table, only: %i(destroy edit show update)
+  before_action :load_position, only: %i(new edit)
 
   def index
     @search = Table.search params[:q]
     @search.sorts  = "created_at desc" if @search.sorts.empty?
-    @tables = @search.result.page(params[:page]).per_page 5
+    @tables = @search.result.page(params[:page]).per_page 10
   end
 
   def show
@@ -53,10 +54,14 @@ class Admin::TablesController < ApplicationController
 
   private
   def table_params
-    current_params = params.require(:table).permit(:name)
+    current_params = params.require(:table).permit(:name, :code, :position_id)
   end
 
   def load_table
     @table = Table.find_by id: params[:id]
+  end
+
+  def load_position
+    @positions = Position.all
   end
 end

@@ -72,8 +72,8 @@ class Admin::Ajax::ProductsOrdersController < ApplicationController
   end
 
   def load_table
-    @table_home = Table.includes(:orders).where table_location: 1
-    @table_out_left = Table.includes(:orders).where table_location: 2
-    @table_front = Table.includes(:orders).where table_location: 3
+    @table_home = Table.includes(:orders).where position_id: 1
+    @table_out_left = Table.includes(:orders).where position_id: 2
+    @table_front = Table.includes(:orders).where position_id: 3
   end
 end

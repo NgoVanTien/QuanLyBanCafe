@@ -40,6 +40,7 @@ gem "breadcrumbs_on_rails"
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem "font-awesome-rails"
+gem 'draper'
 
 group :development, :test do
   gem "byebug", platform: :mri
