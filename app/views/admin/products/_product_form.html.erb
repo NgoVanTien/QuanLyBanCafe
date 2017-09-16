@@ -1,0 +1,69 @@
+<%= form_for [:admin, product], html: {class: "form-horizontal"} do |f| %>
+  <div class="box-body">
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Mã Sản Phẩm</label>
+      <div class="col-sm-8">
+        <%= f.text_field :code, class: "form-control", placeholder: "Nhập Mã Sản Phẩm" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Tên Sản Phẩm</label>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class: "form-control", placeholder: "Nhập Tên Sản Phẩm" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Loại Sản Phẩm</label>
+      <div class="col-sm-8">
+        <%= f.select :category_id,
+          @categories.collect { |category| [ category.name, category.id ] },
+          {include_blank: "Chọn loại sản phẩm"}, {class: "form-control "} %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Mô Tả</label>
+      <div class="col-sm-8">
+        <%= f.text_field :description, class: "form-control", placeholder: "Nhập Mô Tả" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Giá Sản Phẩm</label>
+      <div class="col-sm-8">
+        <%= f.number_field :price, class: "form-control", placeholder: "Nhập Giá Sản Phẩm" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Đơn Vị </label>
+      <div class="col-sm-8">
+        <%= f.text_field :unit, class: "form-control", placeholder: "Nhập Đơn Vị" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+  </div>
+  <div class="box-footer">
+    <%= link_to "Trở Về", admin_tables_path, class: "btn btn-default btn-warning" %>
+    <% if product.persisted?%>
+      <%= f.submit "Chỉnh Sửa", class: "btn btn-info pull-right load-alert" %>
+    <% else %>
+      <%= f.submit "Tạo Mới", class: "btn btn-info pull-right load-alert" %>
+    <% end %>
+  </div>
+<% end %>

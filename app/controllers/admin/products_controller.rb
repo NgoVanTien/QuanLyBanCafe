@@ -1,11 +1,13 @@
 class Admin::ProductsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_category
-  before_action :load_product, only: [:show, :destroy, :edit, :update]
+  before_action :load_category, only: %i(new edit)
+  before_action :load_product, only: %i(destroy edit show update)
+
 
   def index
-    @products = Product.page(params[:page])
-      .per_page 10
+    @search = Product.search params[:q]
+    @search.sorts  = "created_at desc" if @search.sorts.empty?
+    @products = @search.result.includes(:category).page(params[:page]).per_page 10
   end
 
   def new
@@ -15,9 +17,10 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new product_params
     if @product.save
-      flash[:success] = "Tao thanh cong"
+      flash[:success] = "Bạn đả tạo thành công"
       redirect_to admin_products_path
     else
+      flash[:danger] = "Bạn đả tạo không thành công"
       render :new
     end
   end
@@ -28,18 +31,19 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update_attributes product_params
-      flash[:success] = t "devise.registrations.updated"
+      flash[:success] = "Chúc mừng bạn đả cập nhật thành công."
       redirect_to admin_products_path
     else
+      flash[:danger] = "Xin lỗi ! Bạn đã cập nhật không thành công."
       render :edit
     end
   end
 
   def destroy
     if @product.destroy
-      flash[:success] = "xoa thanh cong"
+      flash[:success] = "Chúc mừng bạn đả xóa thành công."
     else
-      flash[:warning] = "xoa khong thanh cong"
+      flash[:danger] = "Xin lỗi ! Bạn đã xóa không thành công, xin thử lại."
     end
     redirect_to admin_products_path
   end

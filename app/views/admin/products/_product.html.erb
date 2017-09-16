@@ -1,0 +1,32 @@
+<tr>
+  <td><%= product.code %></td>
+  <td><%= product.name %></td>
+  <td><%= product.category.name %></td>
+  <td><%= product.description %></td>
+  <td><%= product.price %></td>
+  <td><%= product.unit %></td>
+  <td class="tac-vu">
+    <%= link_to admin_product_path(product), class: "button-show" do %>
+          <span class="button-inner">
+            <button class="btn button button-show-small">
+              <span class="text">Chi Tiết</span>
+            </button>
+          </span>
+    <% end %>
+    <%= link_to edit_admin_product_path(product), class: "button-edit" do %>
+          <span class="button-inner">
+            <button class="btn button button-edit-small">
+              <span class="text">Chỉnh Sửa</span>
+            </button>
+          </span>
+    <% end %>
+    <%= link_to admin_product_path(product),method: :delete,
+      data: {confirm: "Bạn chắc chắn muốn xóa"}, class: "button-delete" do %>
+          <span class="button-inner">
+            <button class="btn button button-delete-small">
+              <span class="text">Xóa</span>
+            </button>
+          </span>
+    <% end %>
+  </td>
+</tr>
