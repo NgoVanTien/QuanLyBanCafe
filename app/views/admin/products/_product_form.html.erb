@@ -1,4 +1,7 @@
 <%= form_for [:admin, product], html: {class: "form-horizontal"} do |f| %>
+<div class="error_messages_container">
+  <%= render "admin/shared/error", object: f.object %>
+</div>
   <div class="box-body">
 
     <div class="form-group">
