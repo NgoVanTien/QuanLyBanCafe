@@ -1,0 +1,25 @@
+<% if order_product_show.any? %>
+  <table id="table_report_day" class="table table-hover table-striped">
+    <thead class="thead-inverse">
+      <th>Tên Sản Phẩm</th>
+      <th>Đơn Giá</th>
+      <th>Số Lượng</th>
+      <th>Tổng Tiền</th>
+    </thead>
+    <tbody>
+      <% order_product_show.each do |product_order| %>
+        <tr>
+          <td><%= product_order.product.name %></td>
+          <td><%= product_order.product.price %> VNĐ</td>
+          <td><%= product_order.quantity %></td>
+          <td style=" color: red; " ><%= number_with_delimiter(product_order.quantity.to_i * product_order.product.price.to_i, locale: :en) %> VNĐ</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3 class="text-center">Không có thông tin nào.</h3>
+  <div class="col-xs-12 text-center margin-bottom-30">
+    <%= link_to "Trở lại", admin_reports_path, class: "btn btn-default bg-red" %>
+  </div>
+<% end %>

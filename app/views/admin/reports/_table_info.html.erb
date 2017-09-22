@@ -1,0 +1,35 @@
+<% if order_of_day.any? %>
+  <table id="table_report_day" class="table table-hover table-striped">
+    <thead class="thead-inverse">
+      <th>Tên Bàn</th>
+      <th>Tiền Thu Vào</th>
+      <th>Thanh Toán Lúc</th>
+      <th>Số Sản Phẩm</th>
+      <th class="tac-vu">Tác Vụ</th>
+    </thead>
+    <tbody>
+      <% order_of_day.each do |order| %>
+        <tr>
+          <td>Bàn Số <%= order.table_id %></td>
+          <td style=" color: red; " ><%= number_with_delimiter(order.product_orders.sum { |q| q.quantity * q.product.price }, locale: :en) %> VNĐ</td>
+          <td><%= order.updated_at.strftime("Lúc %I:%M%p ngày %m/%d/%Y") %></td>
+          <td><%= order.product_orders.sum(:quantity) %></td>
+          <td class="tac-vu">
+            <%= link_to admin_report_path(order.id), class: "button-show" do %>
+                  <span class="button-inner">
+                    <button class="btn button button-show-small">
+                      <span class="text">Chi Tiết</span>
+                    </button>
+                  </span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3 class="text-center">Không có thông tin nào.</h3>
+  <div class="col-xs-12 text-center margin-bottom-30">
+    <%= link_to "Trở lại", admin_reports_path, class: "btn btn-default bg-red" %>
+  </div>
+<% end %>

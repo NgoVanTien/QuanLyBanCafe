@@ -1,0 +1,59 @@
+<section class="content-header menu-header-button">
+  <%= link_to admin_root_path, class: "btn icon-btn btn-warning" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-circle-arrow-left img-circle text-warning"></span>
+    Trở Về
+  <% end %>
+
+  <%= link_to admin_root_path, class: "btn icon-btn btn-primary" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-primary"></span>
+    Trang Quản Lý
+  <% end %>
+
+  <%= link_to "", class: "btn icon-btn btn-success" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-open-file img-circle text-success"></span>
+    Nhập Từ Excel
+  <% end %>
+
+  <%= link_to "", class: "btn icon-btn btn-info" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-paste img-circle text-info"></span>
+    Xuất Excel
+  <% end %>
+</section>
+
+
+<section class="content">
+
+  <div class="row">
+    <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;" id="reports-result-info">
+      <%= render "admin/reports/detail_info_show", order_show: @order_show, show_total_price: @show_total_price, show_total_products: @show_total_products %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Sản Phẩm</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool btn-filter">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body table-responsive no-padding min-height-600">
+          <div class="col-md-12">
+            <div id="reports-result-table">
+              <%= render "admin/reports/table_info_show", order_product_show: @order_product_show %>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_for :specific_page_js do %>
+  <script type="text/javascript">
+    <%= render "reports_form.js" %>
+  </script>
+<% end %>

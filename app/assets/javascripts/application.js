@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
+//= require moment
+//= require moment/vi
+//= require bootstrap-datetimepicker
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require app

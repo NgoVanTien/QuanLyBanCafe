@@ -1,0 +1,39 @@
+$(document).ready(function(){
+  $(".btn-filter").on("click", function(){
+    if($(".filtertable").css("display") == "none"){
+      $(".filtertable").slideDown();
+    }
+    else {
+      $(".filtertable").slideUp();
+    }
+  });
+
+  $(".search-alert").on("click", function(){
+    swal({
+    title: "Đang Tìm Kiếm",
+    timer: 2000,
+    showConfirmButton: false,
+    type: "success"
+    });
+  });
+
+
+  $('#table_report_day').DataTable();
+
+  $('#datetimepicker4').datetimepicker({
+    locale: 'vi'
+  });
+
+  $(".btn-search-order").on("click", function(){
+    var time = $(".datetime-report").val();
+    var url_path = "<%= admin_ajax_orders_reports_path %>";
+    $.ajax({
+      type: "GET",
+      url: url_path,
+      dataType: "script",
+      data: {
+        time: time
+      }
+    });
+  });
+});
