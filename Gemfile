@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Using gem by Tien
 gem "bootstrap-sass", "~> 3.3.6"
 gem "ransack", github: "activerecord-hackery/ransack"
+gem 'momentjs-rails', '>= 2.9.0'
 gem "bootstrap3-datetimepicker-rails", '~> 4.17.42'
 gem "ckeditor", "4.2.0"
 gem "chartkick"
@@ -41,6 +42,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem "font-awesome-rails"
 gem 'draper'
+
 
 group :development, :test do
   gem "byebug", platform: :mri

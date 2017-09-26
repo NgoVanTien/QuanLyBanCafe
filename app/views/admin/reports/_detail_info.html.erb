@@ -1,0 +1,37 @@
+<div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="info-box">
+    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+    <div class="info-box-content">
+      <span class="info-box-text">Tổng Số Bàn</span>
+      <span class="info-box-number"><%= total_order %> Bàn<small></small></span>
+    </div>
+  </div>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="info-box">
+    <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+    <div class="info-box-content">
+      <span class="info-box-text">Tổng Tiền</span>
+      <span class="info-box-number"><%= number_with_delimiter(total_price, locale: :en) %> VNĐ</span>
+    </div>
+  </div>
+</div>
+<div class="clearfix visible-sm-block"></div>
+<div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="info-box">
+    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+    <div class="info-box-content">
+      <span class="info-box-text">Số Sản Phẩm</span>
+      <span class="info-box-number"><%= total_products %></span>
+    </div>
+  </div>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="info-box">
+    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+    <div class="info-box-content">
+      <span class="info-box-text">Số Người</span>
+      <span class="info-box-number">Chưa Thống Kê</span>
+    </div>
+  </div>
+</div>

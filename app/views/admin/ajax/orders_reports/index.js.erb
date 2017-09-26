@@ -1,0 +1,4 @@
+$("#reports-result-info").html("<%= j render 'admin/reports/detail_info', total_price: @total_price, total_order: @total_order, total_products: @total_products %>");
+$("#reports-result-table").html("<%= j render 'admin/reports/table_info', order_of_day: @order_of_day %>");
+
+$('#table_report_day').DataTable();
