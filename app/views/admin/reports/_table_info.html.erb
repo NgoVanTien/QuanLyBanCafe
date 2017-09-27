@@ -10,9 +10,9 @@
     <tbody>
       <% order_of_day.each do |order| %>
         <tr>
-          <td>Bàn Số <%= order.table_id %></td>
+          <td><%= order.table.name %></td>
           <td style=" color: red; " ><%= number_with_delimiter(order.product_orders.sum { |q| q.quantity * q.product.price }, locale: :en) %> VNĐ</td>
-          <td><%= order.updated_at.strftime("Lúc %I:%M%p ngày %m/%d/%Y") %></td>
+          <td><%= order.updated_at.strftime("%I:%M%p") %></td>
           <td><%= order.product_orders.sum(:quantity) %></td>
           <td class="tac-vu">
             <%= link_to admin_report_path(order.id), class: "button-show" do %>
