@@ -22,6 +22,8 @@
 //= require demo
 //= require printThis
 //= require sweetalert.min
+//= require highcharts
+//= require highcharts/themes/sand-signika
 
 $(document).ready(function(){
   $(".load-alert").on("click", function(){

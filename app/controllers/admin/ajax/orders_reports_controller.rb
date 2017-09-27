@@ -11,7 +11,7 @@ class Admin::Ajax::OrdersReportsController < ApplicationController
 
     # tổng giá tiền
     @total_price = 0
-    
+
     # tổng số sản phảm
     @total_products = 0
 
@@ -25,5 +25,18 @@ class Admin::Ajax::OrdersReportsController < ApplicationController
 
     # số order của ngày
     @total_order = @order_of_day.size
+
+    # Thống kê 15 sản phẩm bán chạy
+    @report_selling_product = []
+    order_id_of_day = @order_of_day.pluck(:id)
+    product_id_of_day = ProductOrder.where(order_id: order_id_of_day).pluck(:product_id).uniq
+    product_id_of_day.each do |product|
+      name_product = Product.find_by_id(product).name
+      quantity_product = ProductOrder.where(product_id: product, order_id: order_id_of_day).sum(:quantity)
+      array_product = []
+      array_product << name_product
+      array_product << quantity_product
+      @report_selling_product << array_product
+    end
   end
 end
