@@ -6,10 +6,14 @@ Rails.application.routes.draw do
     resources :products
     resources :categories
     resources :tables
-    resources :reports
+    resources :reports, only: [:index, :show]
+    resources :week_reports, only: [:index]
+    resources :month_reports, only: [:index]
+    resources :year_reports, only: [:index]
     namespace :ajax do
       resources :products_orders
       resources :orders_reports
+      resources :week_reports
     end
   end
 end

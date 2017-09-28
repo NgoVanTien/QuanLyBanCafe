@@ -23,6 +23,7 @@
 //= require printThis
 //= require sweetalert.min
 //= require highcharts
+//= require highcharts/highcharts-more
 //= require highcharts/themes/sand-signika
 
 $(document).ready(function(){
