@@ -1,0 +1,111 @@
+$("#charts-week-info").html("<%= j render 'admin/week_reports/charts_day_of_week', price_of_week: @price_of_week %>");
+$("#charts-week-product-info").html("<%= j render 'admin/week_reports/charts_week_info', report_selling_product_week: @report_selling_product_week %>");
+
+var data_price_of_week = $("#charts-money-week").data("priceofweek");
+var chart = Highcharts.chart('charts-money-week', {
+  title: {
+    text: 'Doanh Thu Các Ngày'
+  },
+  subtitle: {
+    text: 'Của Tuần Được Chọn'
+  },
+  xAxis: {
+    categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật']
+  },
+  yAxis: {
+    title: {
+      text: "Doanh Thu (VNĐ)"
+    }
+  },
+  tooltip: {
+    pointFormat: 'Doanh Thu: <b>{point.y} VNĐ</b>'
+  },
+  series: [{
+    type: 'column',
+    colorByPoint: true,
+    data: data_price_of_week,
+    showInLegend: false
+  }]
+});
+$('#plain').click(function () {
+  chart.update({
+    chart: {
+      inverted: false,
+      polar: false
+    },
+    subtitle: {
+      text: 'Biểu đồ cột'
+    }
+  });
+});
+$('#inverted').click(function () {
+  chart.update({
+    chart: {
+      inverted: true,
+      polar: false
+    },
+    subtitle: {
+      text: 'Biểu đồ ngang'
+    }
+  });
+});
+$('#polar').click(function () {
+  chart.update({
+    chart: {
+      inverted: false,
+      polar: true
+    },
+    subtitle: {
+      text: 'Biểu đồ tròn'
+    }
+  });
+});
+
+// Set up the chart
+var data = $("#charts-product-week").data("reportsproductweek");
+Highcharts.chart('charts-product-week', {
+  chart: {
+    type: 'column'
+  },
+  title: {
+    text: '15 sản phẩm bán chạy nhất trong tuần'
+  },
+  xAxis: {
+    type: 'category',
+    labels: {
+      rotation: -45,
+      style: {
+        fontSize: '13px',
+        fontFamily: 'Verdana, sans-serif'
+      }
+    }
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: 'Số Lượng Bán Ra'
+    }
+  },
+  legend: {
+    enabled: false
+  },
+  tooltip: {
+    pointFormat: 'Bán được: <b>{point.y} Sản Phẩm</b>'
+  },
+  series: [{
+    name: 'Population',
+    data: data,
+    dataLabels: {
+      enabled: true,
+      rotation: -90,
+      color: '#FFFFFF',
+      align: 'right',
+      format: '{point.y} Sản Phẩm', // one decimal
+      y: 10, // 10 pixels down from the top
+      style: {
+        fontSize: '13px',
+        fontFamily: 'Verdana, sans-serif'
+      }
+    }
+  }]
+});

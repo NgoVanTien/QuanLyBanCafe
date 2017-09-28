@@ -1,0 +1,105 @@
+<section class="content-header menu-header-button">
+  <%= link_to admin_root_path, class: "btn icon-btn btn-warning" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-circle-arrow-left img-circle text-warning"></span>
+    Trở Về
+  <% end %>
+
+  <%= link_to admin_root_path, class: "btn icon-btn btn-primary" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-primary"></span>
+    Trang Quản Lý
+  <% end %>
+
+  <%= link_to "", class: "btn icon-btn btn-success" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-open-file img-circle text-success"></span>
+    Nhập Từ Excel
+  <% end %>
+
+  <%= link_to "", class: "btn icon-btn btn-info" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-paste img-circle text-info"></span>
+    Xuất Excel
+  <% end %>
+</section>
+
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="info-box">
+        <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+        <div class="info-box-content">
+          <div class="form-group">
+            <div class="col-md-6">
+              <label>Chọn ngày của tuần cần thống kê:</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" id='datetimepicker4' class="form-control datetime-report" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+              </div>
+            </div>
+            <div class="col-md-6" style=" margin-top: 25px ">
+              <%= link_to "javascript:void(0);", class: "btn icon-btn btn-danger btn-search-order" do %>
+                <span class="glyphicon btn-glyphicon glyphicon-search img-circle text-danger"></span>
+                Xem Thông Tin
+              <% end %>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: 20%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;" id="reports-result-info">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Sản Phẩm</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool btn-filter">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body table-responsive no-padding min-height-600">
+          <div class="col-md-12">
+            <div id="charts-week-info">
+              <%= render "admin/week_reports/charts_day_of_week", price_of_week: @price_of_week %>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Đồ Thị Sản Phẩm Trong Ngày</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool btn-filter">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body table-responsive no-padding min-height-600">
+          <div id="charts-week-product-info">
+            <%= render "admin/week_reports/charts_week_info", report_selling_product_week: @report_selling_product_week %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_for :specific_page_js do %>
+  <script type="text/javascript">
+    <%= render "week_reports_form.js" %>
+  </script>
+<% end %>
