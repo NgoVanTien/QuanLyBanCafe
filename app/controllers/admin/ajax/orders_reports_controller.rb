@@ -29,14 +29,24 @@ class Admin::Ajax::OrdersReportsController < ApplicationController
     # Thống kê 15 sản phẩm bán chạy
     @report_selling_product = []
     order_id_of_day = @order_of_day.pluck(:id)
-    product_id_of_day = ProductOrder.where(order_id: order_id_of_day).pluck(:product_id).uniq
-    product_id_of_day.each do |product|
-      name_product = Product.find_by_id(product).name
-      quantity_product = ProductOrder.where(product_id: product, order_id: order_id_of_day).sum(:quantity)
-      array_product = []
-      array_product << name_product
-      array_product << quantity_product
-      @report_selling_product << array_product
-    end
+
+    
+    # Hiển thị tất cả các sản phẩm trong ngày
+    # product_id_of_day = ProductOrder.where(order_id: order_id_of_day).pluck(:product_id).uniq
+    # product_id_of_day.each do |product|
+    #   name_product = Product.find_by_id(product).name
+    #   quantity_product = ProductOrder.where(product_id: product, order_id: order_id_of_day).sum(:quantity)
+    #   array_product = []
+    #   array_product << name_product
+    #   array_product << quantity_product
+    #   @report_selling_product << array_product
+    # end
+
+    @report_selling_product = ProductOrder.joins(:product)
+      .where(order_id: order_id_of_day)
+      .select("sum(quantity) as total_quantity, product_id")
+      .group(:product_id).order("total_quantity desc").first(15)
+      .map{|po| [po.product.name, po.total_quantity]}
+
   end
 end
