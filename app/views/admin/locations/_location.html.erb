@@ -1,0 +1,30 @@
+<tr>
+  <td><%= location.name %></td>
+  <td><%= location.description %></td>
+  <td><%= location.row %></td>
+  <td><%= location.column %></td>
+  <td class="tac-vu">
+    <%= link_to admin_location_path(location), class: "button-show", data: {turbolinks: false} do %>
+          <span class="button-inner">
+            <button class="btn button button-show-small">
+              <span class="text">Chi Tiết</span>
+            </button>
+          </span>
+    <% end %>
+    <%= link_to edit_admin_location_path(location), class: "button-edit" do %>
+          <span class="button-inner">
+            <button class="btn button button-edit-small">
+              <span class="text">Chỉnh Sửa</span>
+            </button>
+          </span>
+    <% end %>
+    <%= link_to admin_location_path(location),method: :delete,
+      data: {confirm: "Bạn chắc chắn muốn xóa"}, class: "button-delete" do %>
+          <span class="button-inner">
+            <button class="btn button button-delete-small">
+              <span class="text">Xóa</span>
+            </button>
+          </span>
+    <% end %>
+  </td>
+</tr>

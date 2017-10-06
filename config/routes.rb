@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :products
     resources :categories
     resources :tables
+    resources :locations
     resources :reports, only: [:index, :show]
     resources :week_reports, only: [:index]
     resources :month_reports, only: [:index]
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
       resources :products_orders
       resources :orders_reports
       resources :week_reports
+      resources :area_locations
     end
   end
 end
