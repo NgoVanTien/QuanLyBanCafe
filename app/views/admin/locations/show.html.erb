@@ -1,0 +1,425 @@
+<section class="content-header menu-header-button">
+  <%= link_to new_admin_location_path, class: "btn icon-btn btn-danger" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span>
+    Thêm Mới
+  <% end %>
+
+  <%= link_to admin_root_path, class: "btn icon-btn btn-warning" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-circle-arrow-left img-circle text-warning"></span>
+    Trở Về
+  <% end %>
+
+  <%= link_to admin_root_path, class: "btn icon-btn btn-primary" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-share img-circle text-primary"></span>
+    Trang Quản Lý
+  <% end %>
+
+  <%= link_to "", class: "btn icon-btn btn-success" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-open-file img-circle text-success"></span>
+    Nhập Từ Excel
+  <% end %>
+
+  <%= link_to "", class: "btn icon-btn btn-info" do %>
+    <span class="glyphicon btn-glyphicon glyphicon-paste img-circle text-info"></span>
+    Xuất Excel
+  <% end %>
+</section>
+
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Thay Đổi Vị Trí Và Cấu Trúc Khuôn Viên</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool btn-filter">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="box-header with-border" style=" text-align: center; ">
+          <%= link_to "javascript:void(0);", class: "button-show", onclick: "redips.merge()" do %>
+                <span class="button-inner">
+                  <button class="btn button button-show-small">
+                    <span class="text">Gộp Hàng Hoặc Cột</span>
+                  </button>
+                </span>
+          <% end %>
+          <%= link_to "javascript:void(0);", class: "button-show", onclick: "redips.split('h')" do %>
+                <span class="button-inner">
+                  <button class="btn button button-show-small">
+                    <span class="text">Chia Theo Hàng Ngang</span>
+                  </button>
+                </span>
+          <% end %>
+          <%= link_to "javascript:void(0);", class: "button-show", onclick: "redips.split('v')" do %>
+                <span class="button-inner">
+                  <button class="btn button button-show-small">
+                    <span class="text">Chia Theo Hàng Dọc</span>
+                  </button>
+                </span>
+          <% end %>
+
+          <%= link_to "javascript:void(0);", class: "button-edit", onclick: "redips.row('insert')" do %>
+                <span class="button-inner">
+                  <button class="btn button button-edit-small">
+                    <span class="text">Thêm Hàng</span>
+                  </button>
+                </span>
+          <% end %>
+
+          <%= link_to "javascript:void(0);", class: "button-delete", onclick: "redips.row('delete')" do %>
+                <span class="button-inner">
+                  <button class="btn button button-delete-small">
+                    <span class="text">Xóa Hàng</span>
+                  </button>
+                </span>
+          <% end %>
+
+          <%= link_to "javascript:void(0);", class: "button-edit", onclick: "redips.column('insert')" do %>
+                <span class="button-inner">
+                  <button class="btn button button-edit-small">
+                    <span class="text">Thêm Cột</span>
+                  </button>
+                </span>
+          <% end %>
+
+          <%= link_to "javascript:void(0);", class: "button-delete", onclick: "redips.column('delete')" do %>
+                <span class="button-inner">
+                  <button class="btn button button-delete-small">
+                    <span class="text">Xóa Cột</span>
+                  </button>
+                </span>
+          <% end %>
+        </div>
+        <div class="box-body table-responsive no-padding min-height-600">
+                <!-- container -->
+                <div id="redips-drag" class="table-responsive">
+                  <!-- table1 -->
+                  <table id="table1">
+                      <colgroup>
+                          <col width="1"/> <!-- needed to have both tables nicely aligned -->
+                          <col width="100"/>
+                          <col width="100"/>
+                          <col width="100"/>
+                      </colgroup>
+                      <tbody>
+
+                          <!-- clone 2 elements + trash -->
+                          <tr>
+                              <!-- <td class="redips-mark"></td> -->
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/computer_1.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/tv.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/tr.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/tree.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/table_off.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/table-bar.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/toilet1.png", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/toilet2.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/toilet3.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/toilet4.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/thang1.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/thang2.svg", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+                              <td class="redips-single">
+                                <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                  <%= image_tag "icon/thang3.png", height: "70px", width: "70px" %>
+                                </div>
+                              </td>
+
+                              <td class="redips-trash">Xóa</td>
+                           </tr>
+                           <tr>
+
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/wall1.jpg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/wall2.jpg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/wall_detail.svg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/wall_row.svg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/wall_yallow.svg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/door1.svg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/door2.svg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/door3.svg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                             <td class="redips-single">
+                               <div class="redips-drag redips-clone border-hidden" style=" height: 70px; width: 70px; ">
+                                 <%= image_tag "icon/door4.svg", height: "70px", width: "70px" %>
+                               </div>
+                             </td>
+                           </tr>
+                         </tbody>
+                       </table>
+
+                       <h3 style="text-align: center;" id="location_info" data-locationid="<%= @location.id %>"><%= @location.name %></h3>
+
+                  <!-- main table -->
+                  <table id="mainTable">
+                    <tbody>
+                      <% (1..@location.row).each do |row| %>
+                        <tr>
+                          <% (1..@location.column).each do |column| %>
+                            <td>
+
+                            </td>
+                          <% end %>
+                        </tr>
+                      <% end %>
+                        <!-- <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_for :specific_page_js do %>
+  <script type="text/javascript">
+    <%= render "location_form.js" %>
+  </script>
+<% end %>

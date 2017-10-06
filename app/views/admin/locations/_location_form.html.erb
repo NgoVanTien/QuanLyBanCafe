@@ -1,0 +1,49 @@
+<%= form_for [:admin, location], html: {class: "form-horizontal"} do |f| %>
+  <div class="box-body">
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Tên Mặt Bằng</label>
+      <div class="col-sm-8">
+        <%= f.text_field :name, class: "form-control", placeholder: "Nhập Tên Mặt Bằng" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Chú Thích</label>
+      <div class="col-sm-8">
+        <%= f.text_field :description, class: "form-control", placeholder: "Nhập Chú Thích" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Ngang x 1/2 mét</label>
+      <div class="col-sm-8">
+        <%= f.number_field :row, class: "form-control", placeholder: "Diện Tích Bề Ngang" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Dọc x 1/2 mét</label>
+      <div class="col-sm-8">
+        <%= f.number_field :column, class: "form-control", placeholder: "Diện Tích Bề Dọc" %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+  </div>
+  <div class="box-footer">
+    <%= link_to "Trở Về", admin_locations_path, class: "btn btn-default btn-warning" %>
+    <% if location.persisted?%>
+      <%= f.submit "Chỉnh Sửa", class: "btn btn-info pull-right load-alert" %>
+    <% else %>
+      <%= f.submit "Tạo Mới", class: "btn btn-info pull-right load-alert" %>
+    <% end %>
+  </div>
+<% end %>

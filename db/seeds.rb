@@ -154,3 +154,9 @@ Product.create!(category_id: 2, code: "KSCL", name: "Kem Socola", price: 25000)
 Product.create!(category_id: 2, code: "K1V", name: "Kem 1 Viên", price: 12000)
 Product.create!(category_id: 2, code: "ODX", name: "Oreo Đá Xay", price: 25000)
 Product.create!(category_id: 2, code: "CCDX", name: "Cacao Đá Xay", price: 25000)
+
+
+
+
+
+Location.create!(name: "Tầng 1", description: "Tầng trệt", row: 10, column: 10)
