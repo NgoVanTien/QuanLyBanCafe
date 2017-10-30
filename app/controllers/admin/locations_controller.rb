@@ -10,7 +10,7 @@ class Admin::LocationsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def new
@@ -21,6 +21,7 @@ class Admin::LocationsController < ApplicationController
     @location = Location.new location_params
     if @location.save
       flash[:success] = "Bạn đả tạo thành công"
+      create_location_address @location.id
       redirect_to admin_locations_path
     else
 
@@ -63,4 +64,9 @@ class Admin::LocationsController < ApplicationController
     @location = Location.find_by id: params[:id]
   end
 
+  def create_location_address location_id
+    (1..params[:location][:row].to_i).each do |row|
+      Address.create!(location_id: location_id, row_index: row, col_index: params[:location][:column])
+    end
+  end
 end

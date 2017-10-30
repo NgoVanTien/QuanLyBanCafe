@@ -9,12 +9,16 @@ class Admin::Ajax::AreaLocationsController < ApplicationController
     row = @location.row
     column = @location.column
     if params_action_type == "insert" && params_action_name == "column"
+      binding.pry
       @location.update!(column: (column.to_i + 1))
     elsif params_action_type == "delete" && params_action_name == "column"
+      binding.pry
       @location.update!(column: (column.to_i - 1))
     elsif params_action_type == "insert" && params_action_name == "row"
+      binding.pry
       @location.update!(row: (row.to_i + 1))
     else params_action_type == "delete" && params_action_name == "row"
+      binding.pry
       @location.update!(row: (row.to_i - 1))
     end
   end
@@ -23,5 +27,9 @@ class Admin::Ajax::AreaLocationsController < ApplicationController
 
   def load_location id
     @location = Location.find_by_id id.to_i
+  end
+
+  def method_name
+
   end
 end
