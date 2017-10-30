@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005083732) do
+ActiveRecord::Schema.define(version: 20171019041113) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "location_id"
+    t.integer  "row_index"
+    t.integer  "col_index"
+    t.integer  "colspan"
+    t.integer  "rowspan"
+    t.integer  "item"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["location_id"], name: "index_addresses_on_location_id", using: :btree
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "code"
@@ -95,6 +107,7 @@ ActiveRecord::Schema.define(version: 20171005083732) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "locations"
   add_foreign_key "orders", "tables"
   add_foreign_key "product_orders", "orders"
   add_foreign_key "product_orders", "products"
